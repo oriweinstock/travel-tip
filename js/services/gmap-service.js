@@ -3,11 +3,12 @@ export const gmapService = {
     initMap,
     panTo,
     addMarker,
-    getCoordsFromString
+    getCoordsFromString,
+    getNameFromCoords
 }
 
 var gGoogleMap;
-
+var gMarker = [];
 
 export function getGoogleMap() {
     return gGoogleMap;
@@ -47,11 +48,15 @@ export function panTo(lat, lng) {
 }
 
 export function addMarker(loc) {
+ 
+        setMapOnAll(null);
+      
     var marker = new google.maps.Marker({
         position: loc,
         map: gGoogleMap,
         title: 'Hello World!'
     });
+    gmarker.push(marker)
     return marker;
 }
 
@@ -61,5 +66,16 @@ export function getCoordsFromString(searchStr) {
         .then(res => {
             console.log(res);
             return Promise.resolve(res.data.results[0]);
+        })
+}
+
+
+export function getNameFromCoords(coords) { //do not need?
+    console.log('coordins', coords)
+    const API_KEY = 'AIzaSyCir6Gq_Aa2_eWWdtiB2xcbAQtTmy1W64U';
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lng},${coords.lat}&key=${API_KEY}`)
+        .then(res => {
+            console.log(res);
+            return Promise.resolve(res.data);
         })
 }

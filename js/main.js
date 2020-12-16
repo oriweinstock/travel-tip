@@ -19,6 +19,24 @@ function initMain() {
                     lat: ev.latLng.lat(),
                     lng: ev.latLng.lng()
                 }
+                gmapService.addMarker(clickPos)
+
+                if (confirm("Save location?") === true) {
+                    // gmapService.getNameFromCoords(clickPos).then(res => {
+                    //     console.log('fron getName', res)
+                    // })
+                    const location =
+                    {
+                        name: prompt('Enter a name for a place'),
+                        lat: clickPos.lat,
+                        lng: clickPos.lng,
+                        createdAt: Date.now(),
+                        updatedAt: (Date.now() + 2000)
+                    }
+                    locationService.addLocation(location)
+
+                }
+
                 // TODO - not panTo, but new Marker
                 // and save button, anywhere.
                 // function to save coord-s
@@ -40,7 +58,20 @@ function initEventListeners() {
     document.querySelector('.btn-search').addEventListener('click', () => {
         console.log('search clicked', elSearchInput.value);
         // TODO - do something with returned co-ords. panto, show save button
-        gmapService.getCoordsFromString(elSearchInput.value);
+        gmapService.getCoordsFromString(elSearchInput.value)
+            .then(res => {
+                if (confirm("Save location?") === true) {
+                    const location =
+                    {
+                        name: res.address_components[0].long_name,
+                        lat: res.geometry.location.lat,
+                        lng: res.geometry.location.lng,
+                        createdAt: Date.now(),
+                        updatedAt: (Date.now() + 2000)
+                    }
+                    locationService.addLocation(location)
+                }
+            });
     });
 
     // weather
@@ -83,7 +114,7 @@ function renderWeather(weather) {
 // UPDATE
 function onGetUserPosition() { ///add to button in html;
     const map = gmapService.getGoogleMap();
-     getUserPosition()
+    getUserPosition()
         .then(pos => {
             console.log(pos.coords.latitude, pos.coords.longitude)
 
@@ -98,7 +129,7 @@ function onGetUserPosition() { ///add to button in html;
 function getUserPosition() {
     console.log('Getting Pos');
     return new Promise((resolve, reject) => {
-        console.log('thing', navigator.geolocation.getCurrentPosition((pos)=>console.log(pos)))
+        console.log('thing', navigator.geolocation.getCurrentPosition((pos) => console.log(pos)))
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
 }
