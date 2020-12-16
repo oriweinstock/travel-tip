@@ -1,3 +1,4 @@
+import { locationService } from "../services/location-service";
 
 
 // TODO: change to main.js and module structure
@@ -11,10 +12,11 @@ function onInit() {
 
     elGoSearch.addEventListener('click', () => {
         console.log('search clicked', elSearchInput.value);
-        searchLocation(elSearchInput.value);
+        searchLocationByName(elSearchInput.value);
     });
     elMyLocationBtn.addEventListener('click', () => {
         console.log('fetching user location');
+        // TODO -re-arrange
         getUserLocation();
     });
     elCopyLocationBtn.addEventListener('click', () => {
@@ -24,13 +26,15 @@ function onInit() {
 }
 
 function copyUrlToClipboard() {
-
+    // TODO LATER
 }
 
 function getUserLocation() {
-
+    // DONE - re-arrange later
 }
 
-function searchLocation(location) {
-    
+function searchLocationByName(location) {
+    // TODO 1. GEOCODE TOKYO => lat/lng
+    // TODO 2. save it
+    locationService.addLocation(location);
 }

@@ -15,9 +15,11 @@ Vika ->
 v setup api key
 v capture click on map -> give me lat/lng
 v my location
+- geocode ("tokio" -> coordinates)  => save
 
 Ori ->
-- continue index.html (event listeners, functions (not working yet))
-- basic css
-- import storage storageService
+V continue index.html (event listeners, functions (not working yet))
+v basic css
+V import storage storageService
 - render table
+- weather

@@ -26,7 +26,7 @@ window.onload = () => {
         .catch(er => console.log('INIT MAP ERROR', er));
 
 
-    document.querySelector('.my-location').addEventListener('click', (ev) => {
+    document.querySelector('.btn-my-location').addEventListener('click', (ev) => {
         onGetUserPosition()
     }
     )
