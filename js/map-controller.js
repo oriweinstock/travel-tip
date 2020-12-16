@@ -27,10 +27,7 @@ window.onload = () => {
 
 
     document.querySelector('.btn-my-location').addEventListener('click', (ev) => {
-<<<<<<< HEAD
         console.log('my pos', onGetUserPosition())
-=======
->>>>>>> b175413dfbf1205ed986a63505a638803f9d7e08
         onGetUserPosition()
     }
     )

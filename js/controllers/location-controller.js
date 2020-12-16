@@ -35,6 +35,18 @@ function getUserLocation() {
 
 function searchLocationByName(location) {
     // TODO 1. GEOCODE TOKYO => lat/lng
+    _connectCodeApi()
+        .then(res => console.log(res))
     // TODO 2. save it
-    locationService.addLocation(location);
+    // locationService.addLocation(location);
+}
+
+//service:
+function _connectCodeApi(req) {
+    const API_KEY = 'AIzaSyCir6Gq_Aa2_eWWdtiB2xcbAQtTmy1W64U';
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,
+    +Mountain+View,+CA&key=${API_KEY}`)
+        .then(res => {
+            return Promise.resolve(res.data);
+        })
 }
