@@ -1,7 +1,7 @@
 Stage #1:
 ----------
 - setup API
-- setup GIT
+v setup GIT
 - capture map clicks
 - locationService{id, name, lat, lng, weather, createdAt, updatedAt}
 - create storageService
