@@ -1,10 +1,11 @@
-import {storageService} from './storage-service.js'
+import { storageService } from './storage-service.js'
 
 export const locationService = {
     getLocations,
     addLocation,
     getLocationById,
     renameLocation,
+    getNextId
 }
 
 const STORAGE_KEY = 'locations';
@@ -12,13 +13,14 @@ const STORAGE_KEY = 'locations';
 var gNextId = 101;
 // TODO - get locations from user
 const gLocations = [
-    { id: gNextId++, name: 'Ramat Gan', lat: 31.222, lng: 29.1322, createdAt: Date.now(), updatedAt: (Date.now() + 2000) },
-    { id: gNextId++, name: 'Tel Aviv', lat: 31.522, lng: 29.9322, createdAt: Date.now(), updatedAt: (Date.now() + 2500) }
+    // { id: gNextId++, name: 'Ramat Gan', lat: 31.222, lng: 29.1322, createdAt: Date.now(), updatedAt: (Date.now() + 2000) },
+    // { id: gNextId++, name: 'Tel Aviv', lat: 31.522, lng: 29.9322, createdAt: Date.now(), updatedAt: (Date.now() + 2500) }
 ];
 
 // CRAETE
 function addLocation(location) {
     console.log('Adding location:', location);
+    location.id = getNextId()
     gLocations.push(location);
     storageService.saveToStorage(STORAGE_KEY, gLocations);
 }
@@ -42,6 +44,9 @@ function getLocationById(locId) {
 function getLocationIdxById(locId) {
     let locationIdx = gLocations.findIndex(location => location.id === locId);
     return Promise.resolve(locationIdx);
+}
+function getNextId() {
+    return gNextId++;
 }
 
 // UPDATE

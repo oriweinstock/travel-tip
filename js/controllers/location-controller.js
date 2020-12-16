@@ -1,6 +1,7 @@
-import { locationService } from "../services/location-service";
+import { locationService } from "../services/location-service.js";
 
 
+console.log(locationService)
 // TODO: change to main.js and module structure
 onInit();
 
@@ -9,7 +10,7 @@ function onInit() {
     const elGoSearch = document.querySelector('.btn-search');
     const elMyLocationBtn = document.querySelector('.btn-my-location');
     const elCopyLocationBtn = document.querySelector('.btn-copy-location');
-
+    console.log('GO', elGoSearch)
     elGoSearch.addEventListener('click', () => {
         console.log('search clicked', elSearchInput.value);
         searchLocationByName(elSearchInput.value);
@@ -34,19 +35,26 @@ function getUserLocation() {
 }
 
 function searchLocationByName(location) {
-    // TODO 1. GEOCODE TOKYO => lat/lng
-    _connectCodeApi()
-        .then(res => console.log(res))
-    // TODO 2. save it
-    // locationService.addLocation(location);
+    _connectCodeApi(location)
+        .then(res => {
+            const location =
+            {
+                name: res.address_components[0].long_name,
+                lat: res.geometry.location.lat,
+                lng: res.geometry.location.lng,
+                createdAt: Date.now(),
+                updatedAt: (Date.now() + 2000)
+            }
+            locationService.addLocation(location)
+        })
 }
 
 //service:
 function _connectCodeApi(req) {
+    console.log('req', req);
     const API_KEY = 'AIzaSyCir6Gq_Aa2_eWWdtiB2xcbAQtTmy1W64U';
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,
-    +Mountain+View,+CA&key=${API_KEY}`)
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address={${req}}&key=${API_KEY}`)
         .then(res => {
-            return Promise.resolve(res.data);
+            return Promise.resolve(res.data.results[0]);
         })
 }
