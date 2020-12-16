@@ -6,3 +6,58 @@ body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     background-color: beige;
 }
+
+/* HEADER */
+.main-layout {
+    width: 70vw;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.header {
+    background-color: cadetblue;
+}
+h1 {
+    padding: 10px;
+}
+button, input {
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+button {
+    background-color: #999;
+    color: #eee;
+}
+
+/* SUB-HEADER */
+.curr-location {
+    background-color: darkgrey;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    display: block;
+    background-color: darkkhaki;
+}
+.left-side {
+    background-color: #fff;
+    padding: 20px;
+    width: 90%;
+}
+.weather, .locations-table {
+    display: block;
+    height: 10vw;
+    background-color: darkmagenta;
+}
+/* .locations-table {
+    display: block;
+    width: 50p0x;
+} */
+/* HELPERS */
+.flex {display: flex;}
+.flex.align-center {align-items: center;}
+.flex.space-between {justify-content: space-between;}
+.flex.column {flex-direction: column;}
+.mrg-bottom {margin-bottom: 20px;}
