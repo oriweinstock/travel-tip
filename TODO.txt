@@ -12,7 +12,7 @@ V setup GIT
 - getLink to render URL with ?params per location
 
 Vika -> 
-- setup api key
+v setup api key
 - capture click on map -> give me lat/lng
 - my location
 
