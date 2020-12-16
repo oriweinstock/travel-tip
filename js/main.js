@@ -7,6 +7,9 @@ window.onload = initMain;
 
 function initMain() {
     initEventListeners();
+    locationService.getLocations()
+        .then(renderLocationsTable)
+        .catch(err => console.log(err));
     gmapService.initMap()
         .then(() => {
             onGetUserPosition()
@@ -75,12 +78,40 @@ function initEventListeners() {
     document.querySelector('.btn-weather').addEventListener('click', () => {
         console.log('refreshing weather')
         weatherService.getWeatherByCoords({ lat: 32.0853, lon: 34.7818 }) // !!!
-            .then(weatherService.renderWeather)
+            .then(renderWeather)
             .catch(err => console.log(err));
     })
+
+    // table
+    document.querySelector('.btn-table').addEventListener('click', () => {
+        console.log('refreshing table')
+        locationService.getLocations()
+            .then(renderLocationsTable)
+            .catch(err => console.log(err));
+    })
+    
 }
 
+// LIST
+function renderLocationsTable(locations) {
+    const strHtmls = locations.map(location=> {
+        console.log(location);
+        return `<tr>
+                    <td class="loc-name">${location.name}</td>
+                    <td><button class="btn-go" data-idx="${location.id}">GO</button></td>
+                    <td><button class="btn-delete" data-idx="${location.id}">DEL</button></td>
+                </tr>`
+    });
 
+    document.querySelector('.locations-tbody').innerHTML = strHtmls.join('');
+}
+
+function renderWeather(weather) {
+    console.log('weather', weather);
+    document.querySelector('.forecast').innerHTML = `${Math.round(weather.main.temp)}&#8451, with winds up to ${weather.wind.speed}KM/h`
+}
+
+// UPDATE
 function onGetUserPosition() { ///add to button in html;
     const map = gmapService.getGoogleMap();
     getUserPosition()

@@ -1,6 +1,5 @@
 export const weatherService = {
-    getWeatherByCoords,
-    renderWeather
+    getWeatherByCoords
 }
 
 const WEATHER_API_KEY = '385e6db04cc746088ea965578c6ef323';
@@ -18,10 +17,7 @@ export function getWeatherByCoords(coords) {
 }
 
 // TODO : seperate to controller / main.js
-function renderWeather(weather) {
-    console.log('weather', weather);
-    document.querySelector('.forecast').innerHTML = `${weather.main.temp}&#8451, with winds up to ${weather.wind.speed}KM/h`
-}
+
 
 // TODO move it to main.js
 function addWeatherListener() {

@@ -38,6 +38,7 @@
                 <table class="locations-table">
                     <thead>
                         <th>Locations Table</th>
+                        <th colspan="2"><button class="btn-table">REFRESH</button></th>
                     </thead>
                     <tbody class="locations-tbody">
                     </tbody>
@@ -45,6 +46,7 @@
             </div>
             <div id="map" style="width: 100%; height: 400px;"></div>
         </main>
+        <button class="" data-toggle="tooltip" data-placement="top" title="Copy profile Link" onclick="copy_to_clipboard('<%=public_profile_url(user.public_id)%>')">URL</button>
     </div>
 
     <!-- <button class="btn">Click Me</button> -->
