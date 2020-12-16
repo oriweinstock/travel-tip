@@ -34,17 +34,17 @@ function getUserLocation() {
     // DONE - re-arrange later
 }
 
-function searchLocationByName(location) {
+function searchLocationByName(location) { ///do not need
     _connectCodeApi(location)
         .then(res => {
-            const location =
-            {
-                name: res.address_components[0].long_name,
-                lat: res.geometry.location.lat,
-                lng: res.geometry.location.lng,
-                createdAt: Date.now(),
-                updatedAt: (Date.now() + 2000)
-            }
+                const location =
+                {
+                    name: res.address_components[0].long_name,
+                    lat: res.geometry.location.lat,
+                    lng: res.geometry.location.lng,
+                    createdAt: Date.now(),
+                    updatedAt: (Date.now() + 2000)
+                }
             locationService.addLocation(location)
         })
 }
