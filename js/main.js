@@ -70,7 +70,16 @@ function initEventListeners() {
                 }
             });
     });
+
+    // weather
+    document.querySelector('.btn-weather').addEventListener('click', () => {
+        console.log('refreshing weather')
+        weatherService.getWeatherByCoords({ lat: 32.0853, lon: 34.7818 }) // !!!
+            .then(weatherService.renderWeather)
+            .catch(err => console.log(err));
+    })
 }
+
 
 function onGetUserPosition() { ///add to button in html;
     const map = gmapService.getGoogleMap();
