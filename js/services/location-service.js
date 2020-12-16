@@ -7,9 +7,10 @@ export const locationService = {
     renameLocation,
 }
 
-var gNextId = 101;
-const LOCATIONS_KEY = 'locations';
+const STORAGE_KEY = 'locations';
 
+var gNextId = 101;
+// TODO - get locations from user
 const gLocations = [
     { id: gNextId++, name: 'Ramat Gan', lat: 31.222, lng: 29.1322, createdAt: Date.now(), updatedAt: (Date.now() + 2000) },
     { id: gNextId++, name: 'Tel Aviv', lat: 31.522, lng: 29.9322, createdAt: Date.now(), updatedAt: (Date.now() + 2500) }
@@ -18,7 +19,8 @@ const gLocations = [
 // CRAETE
 function addLocation(location) {
     console.log('Adding location:', location);
-    gLocations.push(location)
+    gLocations.push(location);
+    storageService.saveToStorage(STORAGE_KEY, gLocations);
 }
 
 
