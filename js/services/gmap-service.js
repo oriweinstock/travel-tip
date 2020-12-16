@@ -8,7 +8,7 @@ export const gmapService = {
 }
 
 var gGoogleMap;
-var gMarker = [];
+var gMarkers = [];
 
 export function getGoogleMap() {
     return gGoogleMap;
@@ -48,17 +48,22 @@ export function panTo(lat, lng) {
 }
 
 export function addMarker(loc) {
- 
-        setMapOnAll(null);
-      
+    setMapOnAll(null)  
     var marker = new google.maps.Marker({
         position: loc,
         map: gGoogleMap,
         title: 'Hello World!'
     });
-    gmarker.push(marker)
+    gMarkers.push(marker)
     return marker;
 }
+
+// Sets the map on all markers in the array:
+function setMapOnAll(map) {
+    for (let i = 0; i < gMarkers.length; i++) {
+        gMarkers[i].setMap(map);
+      }
+  }
 
 export function getCoordsFromString(searchStr) {
     const API_KEY = 'AIzaSyCir6Gq_Aa2_eWWdtiB2xcbAQtTmy1W64U';
