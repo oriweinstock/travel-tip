@@ -26,7 +26,8 @@ window.onload = () => {
         .catch(er => console.log('INIT MAP ERROR', er));
 
 
-    document.querySelector('.my-location').addEventListener('click', (ev) => {
+    document.querySelector('.btn-my-location').addEventListener('click', (ev) => {
+        console.log('my pos', onGetUserPosition())
         onGetUserPosition()
     }
     )
@@ -60,7 +61,7 @@ function addMarker(loc) {
 function getUserPosition() {
     console.log('Getting Pos');
     return new Promise((resolve, reject) => {
-        // console.log('thing', navigator.geolocation.getCurrentPosition((pos)=>console.log(pos)))
+        console.log('thing', navigator.geolocation.getCurrentPosition((pos)=>console.log(pos)))
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
 }
@@ -86,6 +87,7 @@ function onGetUserPosition() { ///add to button in html;
     getUserPosition()
         .then(pos => {
             console.log(pos.coords.latitude, pos.coords.longitude)
+
             gGoogleMap.setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude });
             addMarker({ lat: pos.coords.latitude, lng: pos.coords.longitude });
         })
