@@ -50,11 +50,3 @@ function searchLocationByName(location) {
 }
 
 //service:
-function _connectCodeApi(req) {
-    console.log('req', req);
-    const API_KEY = 'AIzaSyCir6Gq_Aa2_eWWdtiB2xcbAQtTmy1W64U';
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address={${req}}&key=${API_KEY}`)
-        .then(res => {
-            return Promise.resolve(res.data.results[0]);
-        })
-}

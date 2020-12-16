@@ -1,3 +1,7 @@
+export const { weatherService } = {
+    getWeatherByCoords
+}
+
 const WEATHER_API_KEY = '385e6db04cc746088ea965578c6ef323';
 
 
