@@ -1,7 +1,7 @@
 Stage #1:
 ----------
 - setup API
-v setup GIT
+V setup GIT
 - capture map clicks
 - locationService{id, name, lat, lng, weather, createdAt, updatedAt}
 - create storageService
@@ -10,3 +10,14 @@ v setup GIT
 - add my location button
 - implement Geocode API (translate address to co-ords)
 - getLink to render URL with ?params per location
+
+Vika -> 
+- setup api key
+- capture click on map -> give me lat/lng
+- my location
+
+Ori ->
+- continue index.html (event listeners, functions (not working yet))
+- basic css
+- import storage storageService
+- render table
