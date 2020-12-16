@@ -20,6 +20,7 @@ h1 {
     padding: 10px;
 }
 button, input {
+    cursor: pointer;
     border: none;
     outline: none;
     padding: 10px 12px;
@@ -43,13 +44,23 @@ button {
 }
 .left-side {
     background-color: #fff;
-    padding: 20px;
     width: 90%;
 }
 .weather, .locations-table {
+    padding: 20px;
     display: block;
-    height: 10vw;
+    height: 50%;
     background-color: darkmagenta;
+    color: #fee;
+    line-height: 1.4;
+}
+.weather h2 {
+    margin: 30px 0px 0px 0px;
+}
+.forecast {
+    margin-inline-start: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 /* .locations-table {
     display: block;

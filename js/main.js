@@ -39,7 +39,16 @@ function initEventListeners() {
         // TODO - do something with returned co-ords. panto, show save button
         gmapService.getCoordsFromString(elSearchInput.value);
     });
+
+    // weather
+    document.querySelector('.btn-weather').addEventListener('click', () => {
+        console.log('refreshing weather')
+        weatherService.getWeatherByCoords({ lat: 32.0853, lon: 34.7818 }) // !!!
+            .then(weatherService.renderWeather)
+            .catch(err => console.log(err));
+    })
 }
+
 
 function onGetUserPosition() { ///add to button in html;
     const map = gmapService.getGoogleMap();
