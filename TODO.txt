@@ -1,0 +1,12 @@
+Stage #1:
+----------
+- setup API
+- setup GIT
+- capture map clicks
+- locationService{id, name, lat, lng, weather, createdAt, updatedAt}
+- create storageService
+- save locations to storage
+- render Locations table (name, (hidden co-ords) Go / Delete)
+- add my location button
+- implement Geocode API (translate address to co-ords)
+- getLink to render URL with ?params per location
