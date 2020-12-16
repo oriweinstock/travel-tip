@@ -13,15 +13,15 @@
 
         <header class="header flex align-center space-between">
             <h1>TravelTip</h1>
-            <form action="" class="search">
-                <input type="text" name="search-text" id="" placeholder="Enter Location...">
-                <button>GO</button>
-                <button>My Location</button>
-            </form>
+            <div class="search">
+                <input type="text" name="search-text" id="" placeholder="Enter Location..." value="">
+                <button class="btn-search">GO</button>
+                <button class="btn-my-location">My Location</button>
+            </div>
         </header>
         <div class="curr-location flex align-center space-between">
             <h2>Location: Central Perk</h2>
-            <button>Copy Location</button>
+            <button class="btn-copy-location">Copy Location</button>
         </div>
         <main class="main-content flex">
             <div class="left-side flex column">
@@ -42,10 +42,11 @@
 
     <!-- <button class="btn">Click Me</button> -->
     
+    <script src="lib/axios.js"></script>
 
-
-    <!-- <script type="module" src="js/services/location-service.js"></script> -->
     <script type="module" src="js/map-controller.js"></script>
+    <script src="js/controllers/location-controller.js"></script>
+    <script src="js/services/weather-service.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir6Gq_Aa2_eWWdtiB2xcbAQtTmy1W64U&callback=init"></script>
 </body>
 </html>
