@@ -34,19 +34,26 @@ function getUserLocation() {
     // DONE - re-arrange later
 }
 
-function searchLocationByName(location) {
-    _connectCodeApi(location)
-        .then(res => {
-            const location =
-            {
-                name: res.address_components[0].long_name,
-                lat: res.geometry.location.lat,
-                lng: res.geometry.location.lng,
-                createdAt: Date.now(),
-                updatedAt: (Date.now() + 2000)
-            }
-            locationService.addLocation(location)
-        })
+window.test = renderLocationsTable;
+
+function renderLocationsTable() {
+    let elTable = document.querySelector('table');
+    console.log(elTable);
 }
+
+// function searchLocationByName(location) {
+//     _connectCodeApi(location)
+//         .then(res => {
+//             const location =
+//             {
+//                 name: res.address_components[0].long_name,
+//                 lat: res.geometry.location.lat,
+//                 lng: res.geometry.location.lng,
+//                 createdAt: Date.now(),
+//                 updatedAt: (Date.now() + 2000)
+//             }
+//             locationService.addLocation(location)
+//         })
+// }
 
 //service:
