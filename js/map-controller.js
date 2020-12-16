@@ -18,6 +18,7 @@ window.onload = () => {
                     lng: ev.latLng.lng()
                 }
                 panTo(clickPos.lat, clickPos.lng)
+                saveCoords(clickPos.lat, clickPos.lng)
                 //function to save coord-s
             })
 
@@ -25,15 +26,10 @@ window.onload = () => {
         .catch(er => console.log('INIT MAP ERROR', er));
 
 
-
-
     document.querySelector('.my-location').addEventListener('click', (ev) => {
         onGetUserPosition()
     }
-    // document.querySelector('.btn').addEventListener('click', (ev) => {
-    //     console.log('Aha!', ev.target);
-    //     panTo(35.6895, 139.6917);
-    // })
+    )
 }
 
 
