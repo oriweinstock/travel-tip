@@ -60,6 +60,8 @@ function initEventListeners() {
         // TODO - do something with returned co-ords. panto, show save button
         gmapService.getCoordsFromString(elSearchInput.value)
             .then(res => {
+                gmapService.getGoogleMap().setCenter({ lat: res.geometry.location.lat, lng: res.geometry.location.lng });
+                gmapService.addMarker({ lat: res.geometry.location.lat, lng: res.geometry.location.lng });
                 if (confirm("Save location?") === true) {
                     const location =
                     {
@@ -89,12 +91,12 @@ function initEventListeners() {
             .then(renderLocationsTable)
             .catch(err => console.log(err));
     })
-    
+
 }
 
 // LIST
 function renderLocationsTable(locations) {
-    const strHtmls = locations.map(location=> {
+    const strHtmls = locations.map(location => {
         console.log(location);
         return `<tr>
                     <td class="loc-name">${location.name}</td>
@@ -119,7 +121,7 @@ function onGetUserPosition() { ///add to button in html;
             console.log(pos.coords.latitude, pos.coords.longitude)
 
             map.setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-            addMarker({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+            gmapService.addMarker({ lat: pos.coords.latitude, lng: pos.coords.longitude });
         })
         .catch(err => {
             console.log('USER POSITION ERROR', err);
@@ -133,3 +135,12 @@ function getUserPosition() {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
 }
+
+// function copyLink(link) {
+//     document.querySelector("#url_public_id").show()
+//     var Url = document.getElementById("url_public_id");
+//     Url.select();
+//     document.execCommand("copy");
+//     document.querySelector("#url_public_id").hide()
+//     alert("Copied URL ");
+// }
